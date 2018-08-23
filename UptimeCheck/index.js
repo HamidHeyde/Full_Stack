@@ -1,6 +1,11 @@
 var http = require('http');
 var url = require('url');
 var stringDecoder = require('string_decoder').StringDecoder;
+//Config
+var config = require('./config');
+//For Debugging Purposes
+var util = require('util');
+var debug = util.debuglog('index');
 
 http.createServer(function (req, res) {
 
@@ -27,15 +32,15 @@ http.createServer(function (req, res) {
             "payload": dataStream
         };
 
-        console.log(inData);
 
         res.setHeader('Content-Type',"application/json");
         res.writeHead(200);
         res.end(JSON.stringify({"SUCCESS":"SERVER WORKING"}));
     });
 
-}).listen(2500, function () {
+}).listen(config.env.port, function () {
     console.log("\x1b[47m\x1b[31m",
-        "HTTP server started @ port : 2500",
+        "HTTP server started @ port : ",config.env.port,
+        "\n[env:", config.env.name,"]",
         "\x1b[0m");
 });
