@@ -2,7 +2,8 @@ var http = require('http');
 var url = require('url');
 var stringDecoder = require('string_decoder').StringDecoder;
 //Config
-var config = require('./config');
+var config = require('./lib/config');
+var router = require('./lib/router');
 //For Debugging Purposes
 var util = require('util');
 var debug = util.debuglog('index');
