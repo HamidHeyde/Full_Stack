@@ -1,4 +1,5 @@
 var config = require('./config');
+var _db = require('./db');
 
 
 var handlers = {};
@@ -21,7 +22,8 @@ handlers.users = function (data, callback) {
         data.db = {
             url: config.db.url,
             db: "uptimeCheck",
-            collection: "users"
+            collection: "users",
+            query: {}
         };
         handlers._users[data.method](data, callback);
     } else {
@@ -33,9 +35,7 @@ handlers.users = function (data, callback) {
 handlers._users = {};
 //Users Get
 handlers._users.get = function (data, callback) {
-    console.log(data.method, "\n", data.query,"\n",data.db);
-    callback(200, 'json',
-        { "success": "users.get" });
+    _db.connect("find", data.db, callback);
 };
 //Users POST
 handlers._users.post = function (data, callback) {
