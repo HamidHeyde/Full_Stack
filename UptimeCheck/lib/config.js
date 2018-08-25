@@ -4,6 +4,9 @@ config.dev = {
     env: {
         name: "Development",
         port: 2500
+    },
+    db:{
+        url:'http://localhost:3000/'
     }
 };
 
@@ -11,6 +14,9 @@ config.dep = {
     env: {
         name: "Deployment",
         port: 4500
+    },
+    db:{
+        url:'http://localhost:3000/'
     }
 };
 
