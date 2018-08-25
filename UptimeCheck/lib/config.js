@@ -6,7 +6,7 @@ config.dev = {
         port: 2500
     },
     db:{
-        url:'http://localhost:3000/'
+        url:'mongodb://localhost:3000'
     }
 };
 
@@ -16,7 +16,7 @@ config.dep = {
         port: 4500
     },
     db:{
-        url:'http://localhost:3000/'
+        url:'mongodb://localhost:3000'
     }
 };
 
