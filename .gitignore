@@ -1,3 +1,5 @@
 [iI]gnore/
 .vscode
 UptimeCheck/data/
+UptimeCheck/node_modules/
+UptimeCheck/package-lock.json
