@@ -34,7 +34,16 @@ handlers.users = function (data, callback) {
 handlers._users = {};
 //Users Get
 handlers._users.get = function (data, callback) {
-    data.db.query = {};
+    data.db.query={};
+    data.db.query.q={};
+    data.db.query.p={
+        "_id":Number(data.query.id),
+        "firstName":Number(data.query.first),
+        "lastName":Number(data.query.last)
+    };
+    
+    console.log(data.db.query);
+
     _db.connect("find", data.db, callback);
 };
 //Users POST
@@ -54,6 +63,16 @@ handlers._users.delete = function (data, callback) {
 };
 //Users OPTIONS
 handlers._users.options = function (data, callback) {
-    callback(200, 'json', { "success": "users.options Page!?" });
+    data.db.query={};
+    data.db.query.q={};
+    data.db.query.p={
+        "_id":Number(data.query.id),
+        "firstName":Number(data.query.first),
+        "lastName":Number(data.query.last)
+    };
+    
+    console.log(data.db.query);
+
+    _db.connect("find", data.db, callback);
 };
 module.exports = handlers;

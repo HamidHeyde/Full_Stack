@@ -15,7 +15,7 @@ db.connect = function (dbMethod, dbConfig, callback) {
             const query = dbConfig.query;
 
             //ASSIGNING EACH OPERATIONS TO ITS OWN METHOD
-            var functionality = (dbMethod+"User");
+            var functionality = (dbMethod + "User");
             functionality = functionality.toString()
 
             db[functionality](dbName, collection, query, function (err, message) {
@@ -34,13 +34,16 @@ db.connect = function (dbMethod, dbConfig, callback) {
 
 db.findUser = function (database, dbCollection, query, callback) {
 
-    database.collection(dbCollection).find(query).toArray(function (err, users) {
-        if (!err && users) {
-            callback(false, users);
-        } else {
-            callback(true, { "ERROR": "Requested Query could not be executed" });
-        }
-    });
+    database.collection(dbCollection)
+        .find(query.q)
+        .project(query.p)
+        .toArray(function (err, users) {
+            if (!err && users) {
+                callback(false, users);
+            } else {
+                callback(true, { "ERROR": "Requested Query could not be executed" });
+            }
+        });
 };
 
 db.insertUser = function (database, dbCollection, query, callback) {
@@ -56,8 +59,8 @@ db.insertUser = function (database, dbCollection, query, callback) {
 
 db.updateUser = function (database, dbCollection, query, callback) {
 
-    database.collection(dbCollection).updateOne(query.query,{$set:query.param} , function (err, result) {
-        if ((!err) && (result.matchedCount == 1)&& (result.modifiedCount == 1)) {
+    database.collection(dbCollection).updateOne(query.query, { $set: query.param }, function (err, result) {
+        if ((!err) && (result.matchedCount == 1) && (result.modifiedCount == 1)) {
             callback(false, { "SUCCESS": "User Deleted Successfuly" });
         } else {
             callback(true, { "ERROR": "Requested Query could not be executed" });
