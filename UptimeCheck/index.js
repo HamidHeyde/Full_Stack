@@ -15,7 +15,7 @@ http.createServer(function (req, res) {
     var method = req.method.toLowerCase();
     var headers = req.headers;
 
-    var dataStream;
+    var dataStream="";
     var decoder = new stringDecoder('utf-8');
 
     req.on('data', function (data) {
