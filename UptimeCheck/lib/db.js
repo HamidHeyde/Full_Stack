@@ -30,7 +30,11 @@ db.connect = function (dbMethod, dbConfig, callback) {
             }else if(dbMethod == "update"){
 
             }else if(dbMethod == "delete"){
-
+                db.deleteUser(dbName, collection, query, function (err,message) {
+                    (!err)
+                        ? callback(200, 'json', message)
+                        : callback(500, 'json', err);
+                });
             }
 
             //CLOSING THE CONNECTION
@@ -63,4 +67,14 @@ db.insertUser = function (database, dbCollection, query, callback) {
     });
 };
 
+db.deleteUser = function (database, dbCollection, query, callback) {
+
+    database.collection(dbCollection).deleteOne(query,function (err, result) {
+        if ((!err) && (result.deletedCount==1)) {
+            callback(false, {"SUCCESS":"User Deleted Successfuly"});
+        } else {
+            callback(true, { "ERROR": "Requested Query could not be executed" });
+        }
+    });
+};
 module.exports = db;

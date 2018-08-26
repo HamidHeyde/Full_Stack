@@ -34,19 +34,12 @@ handlers.users = function (data, callback) {
 handlers._users = {};
 //Users Get
 handlers._users.get = function (data, callback) {
-    data.db.query = { };
+    data.db.query = {};
     _db.connect("find", data.db, callback);
 };
 //Users POST
 handlers._users.post = function (data, callback) {
-    data.db.query = {
-        "firstName": "ben1",
-        "lastName": "hayden1",
-        "email": "ben.hayden1@gmail.com",
-        "phone": "5141234561",
-        "password": "123456",
-        "role": "user"
-    };
+    data.db.query = JSON.parse(data.payload.trim());
     _db.connect("insert", data.db, callback);
 };
 //Users PUT
@@ -57,9 +50,8 @@ handlers._users.put = function (data, callback) {
 };
 //Users DELETE
 handlers._users.delete = function (data, callback) {
-    console.log(data.method, "\n", data.query);
-    callback(200, 'json',
-        { "success": "users.delete" });
+    data.db.query = JSON.parse(data.payload.trim());
+    _db.connect("delete", data.db, callback);
 };
 //Users OPTIONS
 handlers._users.options = function (data, callback) {
