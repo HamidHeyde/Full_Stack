@@ -44,9 +44,8 @@ handlers._users.post = function (data, callback) {
 };
 //Users PUT
 handlers._users.put = function (data, callback) {
-    console.log(data.method, "\n", data.query);
-    callback(200, 'json',
-        { "success": "users.put" });
+    data.db.query = JSON.parse(data.payload.trim());
+    _db.connect("update", data.db, callback);
 };
 //Users DELETE
 handlers._users.delete = function (data, callback) {
@@ -55,8 +54,6 @@ handlers._users.delete = function (data, callback) {
 };
 //Users OPTIONS
 handlers._users.options = function (data, callback) {
-    console.log(data.method, "\n", data.query);
-    callback(200, 'json',
-        { "success": "users.options" });
+    callback(200, 'json', { "success": "users.options Page!?" });
 };
 module.exports = handlers;
