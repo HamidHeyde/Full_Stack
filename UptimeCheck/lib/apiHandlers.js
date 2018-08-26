@@ -23,7 +23,6 @@ handlers.users = function (data, callback) {
             url: config.db.url,
             db: "uptimeCheck",
             collection: "users",
-            query: {}
         };
         handlers._users[data.method](data, callback);
     } else {
@@ -35,13 +34,20 @@ handlers.users = function (data, callback) {
 handlers._users = {};
 //Users Get
 handlers._users.get = function (data, callback) {
+    data.db.query = { };
     _db.connect("find", data.db, callback);
 };
 //Users POST
 handlers._users.post = function (data, callback) {
-    console.log(data.method, "\n", data.query);
-    callback(200, 'json',
-        { "success": "users.post" });
+    data.db.query = {
+        "firstName": "ben1",
+        "lastName": "hayden1",
+        "email": "ben.hayden1@gmail.com",
+        "phone": "5141234561",
+        "password": "123456",
+        "role": "user"
+    };
+    _db.connect("insert", data.db, callback);
 };
 //Users PUT
 handlers._users.put = function (data, callback) {

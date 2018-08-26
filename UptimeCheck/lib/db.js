@@ -22,7 +22,11 @@ db.connect = function (dbMethod, dbConfig, callback) {
                         : callback(500, 'json', err);
                 });
             }else if(dbMethod == "insert"){
-
+                db.insertUser(dbName, collection, query, function (err,message) {
+                    (!err)
+                        ? callback(200, 'json', message)
+                        : callback(500, 'json', err);
+                });
             }else if(dbMethod == "update"){
 
             }else if(dbMethod == "delete"){
@@ -42,6 +46,17 @@ db.findUsers = function (database, dbCollection, query, callback) {
     database.collection(dbCollection).find(query).toArray(function (err, users) {
         if (!err && users) {
             callback(false, users);
+        } else {
+            callback(true, { "ERROR": "Requested Query could not be executed" });
+        }
+    });
+};
+
+db.insertUser = function (database, dbCollection, query, callback) {
+
+    database.collection(dbCollection).insertOne(query,function (err, result) {
+        if ((!err) && (result.insertedCount==1)) {
+            callback(false, {"SUCCESS":"User Submitted Successfuly"});
         } else {
             callback(true, { "ERROR": "Requested Query could not be executed" });
         }
