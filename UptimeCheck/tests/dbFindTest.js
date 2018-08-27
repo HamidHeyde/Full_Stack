@@ -1,6 +1,7 @@
 var _config = require('../lib/config');
 var _db = require('../lib/db');
 var assert = require('assert');
+var testRunner = require('./testRunner');
 
 var tests = {};
 tests.config = {
@@ -20,7 +21,6 @@ tests.config = {
 };
 
 tests.unit = {};
-
 tests.unit["DB find result object should return 200"] = function (config, callback) {
     _db.connect(config.Operation, config.db, function (statusCode, contentType, message) {
         try {
@@ -53,3 +53,5 @@ tests.unit["DB find result object should not be empty"] = function (config, call
     });
 };
 
+//RUNIING THE TEST
+testRunner.Run(tests);
