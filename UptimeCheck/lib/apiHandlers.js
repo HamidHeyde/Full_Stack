@@ -41,8 +41,6 @@ handlers._users.get = function (data, callback) {
         "firstName":Number(data.query.first),
         "lastName":Number(data.query.last)
     };
-    
-    console.log(data.db.query);
 
     _db.connect("find", data.db, callback);
 };
@@ -70,8 +68,6 @@ handlers._users.options = function (data, callback) {
         "firstName":Number(data.query.first),
         "lastName":Number(data.query.last)
     };
-    
-    console.log(data.db.query);
 
     _db.connect("find", data.db, callback);
 };
