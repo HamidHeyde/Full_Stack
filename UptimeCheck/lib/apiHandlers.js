@@ -39,9 +39,16 @@ handlers._users.get = function (data, callback) {
     data.db.query.p={
         "_id":Number(data.query.id),
         "firstName":Number(data.query.first),
-        "lastName":Number(data.query.last)
+        "lastName":Number(data.query.last),
+        "email":Number(data.query.email),
+        "phone":Number(data.query.phone),
+        "password":Number(data.query.password),
     };
+    //??? Important
+    (data.query.role==1)
+    ?data.db.query.p["role"]=Number(data.query.role):false;
 
+    //console.log(data.db.query.p);
     _db.connect("find", data.db, callback);
 };
 //Users POST
