@@ -2,34 +2,51 @@
 
 <head>
     <title>Signin</title>
+    <!-- <base href="http://localhost:2500/"> -->
     <link rel="stylesheet" type="text/css" href="signin.css" />
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
     <div class="wrapper">
-        <div class="header"></div>
+        <div class="header">
+            <div class="logo">
+                <img src="./images/logo.png" alt="logo">
+            </div>
+            <div class="menu">
+                <div class="item"><a href="./index" class="textLink">Home</a></div>
+                <div class="item"><a href="./signup" class="textLink">Signup</a></div>
+            </div>
+        </div>
         <div class="application">
-            <div class="loginForm">
-                <div class="header">Login</div>
-                <form id="signin" action="/api/users" method="GET">
-                    <div class="form">
+            <form id="signin" action="/api/users" method="GET">
+                <div class="loginForm">
+                    <div class="header">
+                        <div class="title">LOGIN</div>
+                    </div>
+                    <div class="content">
                         <div class="row">
                             <div class="label">Username</div>
-                            <input type="text" placeholder="Username">
+                            <div class="userInput">
+                                    <input type="text" placeholder="Username">
+                            </div>
                         </div>
                         <div class="row">
                             <div class="label">Password</div>
-                            <input type="text" placeholder="Pasword">
+                            <div class="userInput">
+                                    <input type="text" placeholder="Pasword">
+                            </div>
                         </div>
                         <div class="row">
                             <input type="button" value="Login">
                         </div>
                     </div>
-                </form>
+                </div>
+            </form>
+            <div class="signupLink">
+                If you don'y have an account please <a href="./signup.html" class="textLink">Signup</a> here
             </div>
-            <div class="signupLink"></div>
         </div>
-        <div class="footer"></div>
     </div>
 </body>
 
