@@ -5,7 +5,7 @@ var router = {
     "notFound":apiHandlers.notFound,
     "/ping":apiHandlers.ping,
     //api
-    "/users":apiHandlers.users
+    "/api/users":apiHandlers.users
     //html
 };
 
