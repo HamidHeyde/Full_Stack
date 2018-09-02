@@ -1,10 +1,36 @@
-<!DOCTYPE html>
 <html>
+
 <head>
     <title>Signin</title>
     <link rel="stylesheet" type="text/css" href="signin.css" />
 </head>
-<body>
 
+<body>
+    <div class="wrapper">
+        <div class="header"></div>
+        <div class="application">
+            <div class="loginForm">
+                <div class="header">Login</div>
+                <form id="signin" action="/api/users" method="GET">
+                    <div class="form">
+                        <div class="row">
+                            <div class="label">Username</div>
+                            <input type="text" placeholder="Username">
+                        </div>
+                        <div class="row">
+                            <div class="label">Password</div>
+                            <input type="text" placeholder="Pasword">
+                        </div>
+                        <div class="row">
+                            <input type="button" value="Login">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="signupLink"></div>
+        </div>
+        <div class="footer"></div>
+    </div>
 </body>
+
 </html>
