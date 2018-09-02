@@ -33,6 +33,8 @@ http.createServer(function (req, res) {
             "payload": dataStream
         };
 
+        // console.log(dataStream);
+        
         var handler = (typeof (router[path]) != 'undefined') ? router[path] : router['notFound'];
         handler(inData, function (statusCode, cType, data) {
 
