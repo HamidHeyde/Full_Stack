@@ -19,7 +19,25 @@ var state = {
 //===========Header
 var Header = function(props){
     var out = 
-    "";
+    ce('div',{className:"header"},
+        ce('div',{className:"logo"},
+            ce('img',{src:"./images/logo.png",alt:"logo"})
+        ),
+        ce('div',{className:"menu"},
+            props.menus.map(function(element,index){
+                return(
+                    ce('div',{className:"item"},
+                        ce('a',{
+                            href:"./"+element.toLowerCase()+".html",
+                            className:"textLink"
+                            },
+                            element
+                        )
+                    )
+                )
+            })
+        )
+    );
 
     return out;
 };
