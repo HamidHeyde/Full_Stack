@@ -81,7 +81,8 @@ var App = function(props) {
       menuClickAction: state.compMenuClick
     }),
     //Rendering Application
-    ce(Application, { data: state.comps[state.currentComp] })
+    //ce(Application, { data: state.comps[state.currentComp] })
+    ce(Application, {})
   );
   return out;
 };
