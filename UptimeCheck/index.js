@@ -46,10 +46,26 @@ http.createServer(function (req, res) {
                 cType = "application/json";
                 data = typeof (data) == 'object' ? data : {};
                 data = JSON.stringify(data);
-            } else if (cType == 'html') {
+            }else if (cType == 'html') {
                 //HTML
                 cType = 'text/html';
                 data = typeof(data) == 'string' ? data : "";
+            }else if (cType == 'plain') {
+                //HTML
+                cType = 'text/plain';
+                data = typeof(data) !== 'undefined' ? data : "";
+            }else if (cType == 'css') {
+                //HTML
+                cType = 'text/css';
+                data = typeof(data) !== 'undefined' ? data : "";
+            }else if (cType == 'png') {
+                //HTML
+                cType = 'image/png';
+                data = typeof(data) !== 'undefined' ? data : "";
+            }else if (cType == 'jpg') {
+                //HTML
+                cType = 'image/jpeg';
+                data = typeof(data) !== 'undefined' ? data : "";
             }
 
             res.setHeader('Access-Control-Allow-Origin', '*');
