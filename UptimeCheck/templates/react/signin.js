@@ -1,11 +1,11 @@
 //===========COMPONENTS===========
-var Application = function(props) {
+var Signin = function(props) {
   var out = 
   ce("div",{ className: "application" },
     ce("form", {id:"signin", action:"/api/users",method:"GET"},
       ce("div",{ className: "loginForm" },
         ce("div",{ className: "header" },
-          ce("div", { className: "title" }, "LOGIN")
+          ce("div", { className: "title" }, "Signin")
         ),
         ce("div", { className: "content" },
             ce("div", { className: "row" },
