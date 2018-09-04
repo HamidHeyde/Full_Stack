@@ -1,0 +1,66 @@
+body {
+    margin: auto;
+    background-color: #ccc;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16px;
+  }
+  .visible {
+    display: block;
+  }
+  .invisible {
+    display: none;
+  }
+  
+  .wrapper {
+    margin: auto;
+    box-sizing: border-box;
+    width: 500px;
+    height: 100px;
+    margin-top: 50px;
+  }
+  .header {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .header .logo{
+    float: left;
+    width: 100px;
+    height: 100px;
+    box-sizing: border-box;
+  }
+  .header .menu{
+    float: right;
+    height: 100px;
+    box-sizing: border-box;
+    padding-right: 20px;
+  }
+  .menu .item{
+    float: left;
+    text-align:center;
+    color: brown;
+    height: 100%;
+    box-sizing: border-box;
+    padding-top: 60px;
+    margin-left: 20px;
+    font-size: 20x;
+  }
+  .menu .item:hover{
+    cursor: pointer;
+    color: rgb(255, 125, 4);
+    text-decoration: underline;
+  }
+  .application {
+    width: 100%;
+    box-sizing: border-box;
+    /* padding: 20px; */
+  }
+  .textLink{
+    color: brown;
+    text-decoration: none;
+  }
+  .textLink:hover{
+    cursor: pointer;
+    color: rgb(255, 125, 4);
+    text-decoration: underline;
+  }
+  
