@@ -34,8 +34,13 @@ http.createServer(function (req, res) {
         };
 
         // console.log(dataStream);
-        
+
         var handler = (typeof (router[path]) != 'undefined') ? router[path] : router['notFound'];
+        if (path.indexOf('/public') > -1) {
+            handler = router['/public'];
+            // console.log(pathName);
+        }
+
         handler(inData, function (statusCode, cType, data) {
 
             statusCode = typeof (statusCode) == 'number' ? statusCode : 200;
