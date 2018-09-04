@@ -38,7 +38,7 @@ http.createServer(function (req, res) {
         var handler = (typeof (router[path]) != 'undefined') ? router[path] : router['notFound'];
         if (path.indexOf('/public') > -1) {
             handler = router['/public'];
-            // console.log(pathName);
+            // console.log(path);
         }
 
         handler(inData, function (statusCode, cType, data) {
@@ -56,20 +56,24 @@ http.createServer(function (req, res) {
                 cType = 'text/html';
                 data = typeof(data) == 'string' ? data : "";
             }else if (cType == 'plain') {
-                //HTML
+                //plain
                 cType = 'text/plain';
                 data = typeof(data) !== 'undefined' ? data : "";
             }else if (cType == 'css') {
-                //HTML
+                //css
                 cType = 'text/css';
                 data = typeof(data) !== 'undefined' ? data : "";
             }else if (cType == 'png') {
-                //HTML
+                //png
                 cType = 'image/png';
                 data = typeof(data) !== 'undefined' ? data : "";
             }else if (cType == 'jpg') {
-                //HTML
+                //jpg
                 cType = 'image/jpeg';
+                data = typeof(data) !== 'undefined' ? data : "";
+            }else if (cType == 'favicon') {
+                //favicon
+                cType = 'image/x-icon';
                 data = typeof(data) !== 'undefined' ? data : "";
             }
 
