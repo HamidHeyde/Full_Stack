@@ -8,7 +8,8 @@ var router = {
     //api
     "/api/users":apiHandlers.users,
     //html
-    "/":htmlHandlers.index
+    "/":htmlHandlers.index,
+    "/public":htmlHandlers.public
 };
 
 module.exports = router;
