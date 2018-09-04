@@ -7,6 +7,9 @@ config.dev = {
     },
     db:{
         url:'mongodb://localhost:3000'
+    },
+    globals:{
+        baseUrl : 'http://localhost:2500/'
     }
 };
 
@@ -17,6 +20,9 @@ config.dep = {
     },
     db:{
         url:'mongodb://localhost:3000'
+    },
+    globals:{
+        baseUrl : 'http://localhost:4500/'
     }
 };
 
