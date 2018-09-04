@@ -42,9 +42,14 @@ http.createServer(function (req, res) {
             cType = typeof (cType) == 'string' ? cType : 'json';
 
             if (cType == 'json') {
+                //JASON
                 cType = "application/json";
                 data = typeof (data) == 'object' ? data : {};
                 data = JSON.stringify(data);
+            } else if (cType == 'html') {
+                //HTML
+                cType = 'text/html';
+                data = typeof(data) == 'string' ? data : "";
             }
 
             res.setHeader('Access-Control-Allow-Origin', '*');
