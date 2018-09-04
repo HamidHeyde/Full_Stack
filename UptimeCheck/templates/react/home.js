@@ -1,4 +1,4 @@
-var Application = function(prpos) {
+var Home = function(prpos) {
     var out = ce("div",{ className: "application" },
       ce(
         "div",
