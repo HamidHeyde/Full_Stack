@@ -3,9 +3,47 @@ var test = function(id, ev) {
   console.log(id);
   console.log(ev.target);
 };
+var createComp = function(compName, compArgs) {
+  var element = document.createElement(compName);
+  var att;
+  for (key in compArgs) {
+    if (compArgs.hasOwnProperty(key)) {
+      var att = document.createAttribute(key);
+      att.value = compArgs[key];
+      element.setAttributeNode(att);
+    }
+  }
+  return element;
+};
 var topMenuClick = function(page, ev) {
-  state.currentComp = page;
-  //console.log(document.getElementsByTagName('link'));
+  
+    // ev.preventDefault();
+    // ev.stopPropagation();
+    // window.history.pushState({}, null, page);
+    // console.log(window.history);
+    // console.log(window.location);
+
+    //Setting State for Component Loading
+    state.currentComp = page;
+
+  var pageLinks =
+    page == "index" ? "home" : (page == "signin" ? "signin" : "signup");
+
+  var linkElement = createComp("link", {
+    rel: "stylesheet",
+    type: "text/css",
+    href: "./"+pageLinks+".css"
+  });
+
+  //Setting the Page Title
+  document.getElementsByTagName('title')[0].innerText = 
+  (pageLinks.charAt(0).toUpperCase() + pageLinks.slice(1));
+
+  var parent = document.getElementsByTagName('head')[0];
+    var linkToReplace = document.getElementsByTagName('link')[0];
+    parent.replaceChild(linkElement,linkToReplace);
+
+  
   renderApp();
 };
 //===========GLOBALS============
@@ -81,8 +119,10 @@ var App = function(props) {
       menuClickAction: state.compMenuClick
     }),
     //Rendering Application
-    //ce(Application, { data: state.comps[state.currentComp] })
-    ce(Application, {})
+    ce((state.currentComp=='index')
+            ?Home:(state.currentComp=='signin')
+                ?Signin:Signup, 
+        {})
   );
   return out;
 };
