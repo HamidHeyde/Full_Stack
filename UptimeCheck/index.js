@@ -51,6 +51,7 @@ http.createServer(function (req, res) {
                 cType = "application/json";
                 data = typeof (data) == 'object' ? data : {};
                 data = JSON.stringify(data);
+                // console.log(data);
             }else if (cType == 'html') {
                 //HTML
                 cType = 'text/html';
