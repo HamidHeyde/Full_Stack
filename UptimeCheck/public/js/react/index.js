@@ -17,9 +17,10 @@ var createComp = function(compName, compArgs) {
 };
 var topMenuClick = function(page, ev) {
   
-    // ev.preventDefault();
-    // ev.stopPropagation();
-    // window.history.pushState({}, null, page);
+   var pageToPush  = (page=='index')?'Home':page;
+    ev.preventDefault();
+    ev.stopPropagation();
+    window.history.pushState({}, null, pageToPush);
     // console.log(window.history);
     // console.log(window.location);
 
@@ -32,7 +33,7 @@ var topMenuClick = function(page, ev) {
   var linkElement = createComp("link", {
     rel: "stylesheet",
     type: "text/css",
-    href: "./"+pageLinks+".css"
+    href: "public/css/react/"+pageLinks+".css"
   });
 
   //Setting the Page Title
@@ -81,7 +82,7 @@ var Header = function(props) {
     ce(
       "div",
       { className: "logo" },
-      ce("img", { src: "./images/logo.png", alt: "logo" })
+      ce("img", { src: "public/images/logo.png", alt: "logo" })
     ),
     ce(
       "div",
