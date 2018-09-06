@@ -7,9 +7,15 @@ var router = {
     "/ping":apiHandlers.ping,
     //api
     "/api/users":apiHandlers.users,
-    //html
+    //Handling React Pages
     "/":htmlHandlers.index,
-    "/public":htmlHandlers.public
+    //Handling Public Assets
+    "/public":htmlHandlers.public,
+    //Handling HTML pages
+    "/html/":htmlHandlers.htmlPages.index,
+    "/html/index":htmlHandlers.htmlPages.index,
+    "/html/signup":htmlHandlers.htmlPages.signup,
+    "/html/signin":htmlHandlers.htmlPages.signin
 };
 
 module.exports = router;
