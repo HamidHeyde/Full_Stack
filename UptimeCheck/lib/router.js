@@ -15,7 +15,9 @@ var router = {
     "/html/":htmlHandlers.htmlPages.index,
     "/html/index":htmlHandlers.htmlPages.index,
     "/html/signup":htmlHandlers.htmlPages.signup,
-    "/html/signin":htmlHandlers.htmlPages.signin
+    "/html/signin":htmlHandlers.htmlPages.signin,
+    "/html/users":htmlHandlers.htmlPages.users,
+    "/html/dashboard":htmlHandlers.htmlPages.dashboard
 };
 
 module.exports = router;
