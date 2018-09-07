@@ -59,7 +59,7 @@ handlers.htmlPages.index = function (data, callback) {
     var pageVariables = {
       headers: {
         title: "Home",
-        css: "public/css/html/index.css"
+        css: "public/css/html/home.css"
       },
       globals: config.globals
     };
@@ -123,6 +123,64 @@ handlers.htmlPages.signup = function (data, callback) {
     };
     //read the physical file
     fileOps.assembleHtmlPage("templates/html/", "signup.html", function (err, page) {
+      if (!err && page) {
+        //pass it back up to the server
+        // helpers.placePageVariables(page, pageVariables);
+        // callback(200, "html", page);
+        helpers.placePageVariables(page, pageVariables, function (finalPage) {
+          callback(200, "html", finalPage);
+        });
+      } else {
+        callback(404, "json", page);
+      }
+    });
+    // callback(200,'json',{"SUCCESS":"@ HTMLT version @ INDEX"});
+  } else {
+    callback(405, 'json', { "ERROR": "METHOD id not allowed" });
+  }
+};
+handlers.htmlPages.users = function (data, callback){
+  var allowedMethods = ['get', 'options'];
+  if (allowedMethods.indexOf(data.method) > -1) {
+
+    var pageVariables = {
+      headers: {
+        title: "Users",
+        css: "public/css/html/users.css"
+      },
+      globals: config.globals
+    };
+    //read the physical file
+    fileOps.assembleHtmlPage("templates/html/", "users.html", function (err, page) {
+      if (!err && page) {
+        //pass it back up to the server
+        // helpers.placePageVariables(page, pageVariables);
+        // callback(200, "html", page);
+        helpers.placePageVariables(page, pageVariables, function (finalPage) {
+          callback(200, "html", finalPage);
+        });
+      } else {
+        callback(404, "json", page);
+      }
+    });
+    // callback(200,'json',{"SUCCESS":"@ HTMLT version @ INDEX"});
+  } else {
+    callback(405, 'json', { "ERROR": "METHOD id not allowed" });
+  }
+};
+handlers.htmlPages.dashboard = function (data, callback){
+  var allowedMethods = ['get', 'options'];
+  if (allowedMethods.indexOf(data.method) > -1) {
+
+    var pageVariables = {
+      headers: {
+        title: "Dashboard",
+        css: "public/css/html/dashboard.css"
+      },
+      globals: config.globals
+    };
+    //read the physical file
+    fileOps.assembleHtmlPage("templates/html/", "dashboard.html", function (err, page) {
       if (!err && page) {
         //pass it back up to the server
         // helpers.placePageVariables(page, pageVariables);
