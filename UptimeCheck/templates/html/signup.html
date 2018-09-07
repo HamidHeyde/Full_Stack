@@ -1,88 +1,54 @@
-<html>
-
-<head>
-    <!-- General Settings -->
-    <meta charset="utf-8">
-    <meta http-equiv="content-language" content="en-us">
-    <base href="{globals.baseUrl}" />
-
-    <!-- Title -->
-    <title>{header.title}</title>
-    
-    <link rel="stylesheet" type="text/css" href="signup.css" />
-    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
-</head>
-
-<body>
-    <div class="wrapper">
-        <div class="header">
-            <div class="logo">
-                <img src="./images/logo.png" alt="logo">
+<div class="application">
+    <form id="signup" action="/api/users" method="POST">
+        <div class="loginForm">
+            <div class="header">
+                <div class="title">LOGIN</div>
             </div>
-            <div class="menu">
-                <div class="item">
-                    <a href="./index.html" class="textLink">Home</a>
+            <div class="content">
+                <div class="row">
+                    <div class="label">First Name</div>
+                    <div class="userInput">
+                        <input name="firstName" type="text" placeholder="First Name">
+                    </div>
                 </div>
-                <div class="item">
-                    <a href="./signin.html" class="textLink">Signin</a>
+                <div class="row">
+                    <div class="label">Last Name</div>
+                    <div class="userInput">
+                        <input name="lastName" type="text" placeholder="Last Name">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="label">Phone</div>
+                    <div class="userInput">
+                        <input name="phone" type="text" placeholder="Phone">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="label">Username</div>
+                    <div class="userInput">
+                        <input name="userName" type="text" placeholder="Username">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="label">Password</div>
+                    <div class="userInput">
+                        <input name="password" type="text" placeholder="Pasword">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="label">Email</div>
+                    <div class="userInput">
+                        <input name="email" type="text" placeholder="Email">
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="button" value="Signup">
                 </div>
             </div>
         </div>
-        <div class="application">
-            <form id="signup" action="/api/users" method="POST">
-                <div class="loginForm">
-                    <div class="header">
-                        <div class="title">LOGIN</div>
-                    </div>
-                    <div class="content">
-                        <div class="row">
-                            <div class="label">First Name</div>
-                            <div class="userInput">
-                                <input name="firstName" type="text" placeholder="First Name">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="label">Last Name</div>
-                            <div class="userInput">
-                                <input name="lastName" type="text" placeholder="Last Name">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="label">Phone</div>
-                            <div class="userInput">
-                                <input name="phone" type="text" placeholder="Phone">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="label">Username</div>
-                            <div class="userInput">
-                                <input name="userName" type="text" placeholder="Username">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="label">Password</div>
-                            <div class="userInput">
-                                <input name="password" type="text" placeholder="Pasword">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="label">Email</div>
-                            <div class="userInput">
-                                <input name="email" type="text" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <input type="button" value="Signup">
-                        </div>
-                    </div>
-                </div>
-            </form>
-            <div class="signupLink">
-                If you don'y have an account please
-                <a href="./signin.html" class="textLink">Signin</a> here
-            </div>
-        </div>
+    </form>
+    <div class="signupLink">
+        If you don'y have an account please
+        <a href="./signin.html" class="textLink">Signin</a> here
     </div>
-</body>
-
-</html>
+</div>
