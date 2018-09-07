@@ -1,4 +1,6 @@
 var fileOps = require("./fileOps");
+var config = require("./config");
+var helpers = require("./helpers");
 
 var handlers = {};
 handlers.htmlPages = {};
@@ -7,7 +9,6 @@ handlers.index = function(data, callback) {
   //read the physical file
   fileOps.read("templates", "react/index.html", function(err, page) {
     if (!err && page) {
-      //replace the variables
       //pass it back up to the server
       callback(200, "html", page);
     } else {
@@ -17,10 +18,6 @@ handlers.index = function(data, callback) {
 };
 
 handlers.public = function(data, callback) {
-  //read the physical file
-  //replace the variables
-  //pass it back up to the server
-  // console.log(data.path);
   fileOps.readStatics("public", data.path, function(err, file) {
     if (!err && file) {
       var fileType = "plain";
@@ -44,7 +41,26 @@ handlers.public = function(data, callback) {
 
 //
 handlers.htmlPages.index = function(data, callback){
-  callback(200,'json',{"SUCCESS":"@ HTMLT version @ INDEX"});
+
+  var pageVariables = {
+    headers:{
+      title:"Home",
+      css:"public/css/html/index.css"
+    },
+    globals:config.globals
+  };
+  //read the physical file
+  fileOps.assembleHtmlPage("templates", "html/index.html", function(err, page) {
+    if (!err && page) {
+      //pass it back up to the server
+        helpers.placePageVariables(page,pageVariables, function(finalPage){
+        callback(200, "html", finalPage);
+      });
+    } else {
+      callback(404, "json", page);
+    }
+  });
+  // callback(200,'json',{"SUCCESS":"@ HTMLT version @ INDEX"});
 };
 handlers.htmlPages.signin = function(data, callback){
   callback(200,'json',{"SUCCESS":"@ HTMLT version @ Signin"});
