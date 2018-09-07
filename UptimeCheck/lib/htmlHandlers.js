@@ -82,10 +82,62 @@ handlers.htmlPages.index = function (data, callback) {
   }
 };
 handlers.htmlPages.signin = function (data, callback) {
-  callback(200, 'json', { "SUCCESS": "@ HTMLT version @ Signin" });
+  var allowedMethods = ['get', 'options'];
+  if (allowedMethods.indexOf(data.method) > -1) {
+
+    var pageVariables = {
+      headers: {
+        title: "Signin",
+        css: "public/css/html/signin.css"
+      },
+      globals: config.globals
+    };
+    //read the physical file
+    fileOps.assembleHtmlPage("templates/html/", "signin.html", function (err, page) {
+      if (!err && page) {
+        //pass it back up to the server
+        // helpers.placePageVariables(page, pageVariables);
+        // callback(200, "html", page);
+        helpers.placePageVariables(page, pageVariables, function (finalPage) {
+          callback(200, "html", finalPage);
+        });
+      } else {
+        callback(404, "json", page);
+      }
+    });
+    // callback(200,'json',{"SUCCESS":"@ HTMLT version @ INDEX"});
+  } else {
+    callback(405, 'json', { "ERROR": "METHOD id not allowed" });
+  }
 };
 handlers.htmlPages.signup = function (data, callback) {
-  callback(200, 'json', { "SUCCESS": "@ HTMLT version @ Signup" });
+  var allowedMethods = ['get', 'options'];
+  if (allowedMethods.indexOf(data.method) > -1) {
+
+    var pageVariables = {
+      headers: {
+        title: "Signup",
+        css: "public/css/html/signup.css"
+      },
+      globals: config.globals
+    };
+    //read the physical file
+    fileOps.assembleHtmlPage("templates/html/", "signup.html", function (err, page) {
+      if (!err && page) {
+        //pass it back up to the server
+        // helpers.placePageVariables(page, pageVariables);
+        // callback(200, "html", page);
+        helpers.placePageVariables(page, pageVariables, function (finalPage) {
+          callback(200, "html", finalPage);
+        });
+      } else {
+        callback(404, "json", page);
+      }
+    });
+    // callback(200,'json',{"SUCCESS":"@ HTMLT version @ INDEX"});
+  } else {
+    callback(405, 'json', { "ERROR": "METHOD id not allowed" });
+  }
 };
 
 module.exports = handlers;
